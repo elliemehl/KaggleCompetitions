@@ -57,7 +57,6 @@ X_HOUSE.head()
 #Fitting it to the training data
 LR_SK = LinearRegression().fit(X_HOUSE, Y_HOUSE)
 print("Intercept =", LR_SK.intercept_)
-##print("Model coefficients =", osl_sk.coef_)
 print("R^2 =", LR_SK.score(X_HOUSE, Y_HOUSE))
 
 #Predicting the sale prices of the testing data

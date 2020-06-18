@@ -5,6 +5,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.tree import DecisionTreeClassifier
 
 #Loading the data
+#Filling blank spaces
 #Dropping features
 TITANIC_RAW_DATA = pd.read_csv("/Users/ellie/combinedtitanic.csv", sep=',')
 TITANIC_RAW_DATA['Age'] = TITANIC_RAW_DATA['Age'].fillna(TITANIC_RAW_DATA['Age'].mean())

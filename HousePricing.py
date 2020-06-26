@@ -5,6 +5,11 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 
+parser = argparse.ArgumentParser(description='Indicate where data can be found.')
+#parser.add_argument("num", help="help txt", type=int)
+args = parser.parse_args()
+#print(args.num)
+
 def clean_data():
     raw_data = pd.read_csv("/Users/ellie/combinedhouse.csv", sep=',')
     house_dropped_data = raw_data.drop(['Alley', 'PoolQC', 'Fence', 'MiscFeature'], axis=1)
@@ -57,7 +62,7 @@ class HousePredictions:
         return result
 
 if __name__ == '__main__':
-    model_instance = House_predictions()
+    model_instance = HousePredictions()
     model_instance.split(0.4995)
     model_instance.fit()
     np.savetxt('HousePredictionPrices.csv', model_instance.predict(), delimiter=',', header='SalePrice')

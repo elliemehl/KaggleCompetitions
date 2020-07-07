@@ -1,18 +1,7 @@
-import argparse
-import pandas as pd
-import numpy as np
-
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
-
-parser = argparse.ArgumentParser('csv')
-parser.add_argument('input_file')
-parser.add_argument('output_file')
-args = parser.parse_args()
-
+from Decision import data_file, save_file
 
 def clean_data():
-    raw_data = pd.read_csv(args.input_file, sep=',')
+    raw_data = pd.read_csv(data_file, sep=',')
     house_dropped_data = raw_data.drop(['Alley', 'PoolQC', 'Fence', 'MiscFeature'], axis=1)
     cols = ['MasVnrArea', 'LotFrontage', 'BsmtFinSF1', 'BsmtUnfSF',
             'TotalBsmtSF', 'BsmtFullBath', 'BsmtHalfBath', 'GarageYrBlt',
@@ -71,5 +60,5 @@ if __name__ == '__main__':
     model_instance = HousePredictions()
     model_instance.split(0.4995)
     model_instance.fit()
-    np.savetxt(args.output_file, model_instance.predict(), delimiter=',',
+    np.savetxt(save_file, model_instance.predict(), delimiter=',',
                header='SalePrice')

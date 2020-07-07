@@ -1,20 +1,17 @@
-import subprocess
-import argparse
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.linear_model import LinearRegression
+from ArgparseTemplate import run_file, save_file, data_file
 
 def main():
-    file_name = raw_input("Would you like to run HousePredictions or TitanicPredictions?")
-    if file_name == "HousePredictions":
-        input_house = raw_input("Please enter input csv file:")
-        output_house = raw_input("Please enter output file:")
-        import HousePredictions
-        args.input_file = input_house
-        args.output_file = output_house
-    elif file_name == "TitanicPredictions":
-        input_titanic = raw_input("Please enter input csv file:")
-        output_titanic = raw_input("Please enter output file:")
-        import TitanicPredictions
+    if run_file == "House":
+        execfile('HousePredictions.py')
+    elif run_file == "Titanic":
+        execfile('TitanicPredictions.py')
     else:
-        print("Please give a valid argument.")
+        print("Please enter a valid argument.")
 
 
 main()
